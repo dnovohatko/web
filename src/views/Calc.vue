@@ -1,0 +1,399 @@
+<template>  
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html#page-top">Home</a>
+    </div>
+  </nav>
+
+  <section class="bg-section">
+    <main class="calc-container">
+      <div id="calculator">
+        <header class="top-part">
+          <div class="top">
+            <h5 class="branding">Calculator</h5>
+
+          </div>
+          <div class="type">
+            <div class="column menu">
+              <div class="calculator-menu calc-button-top" role="button">
+                <img class="icon icons8-Menu" src="@/assets/img/3.png">
+              </div>
+              <label class="calculator-chosen">STANDARD</label>
+            </div>
+            <div class="column history">
+              <div class="calc-button-top" role="button">
+                <img class="icon icons8-Past" src="@/assets/img/4.png">
+              </div>
+            </div>
+          </div>
+          <div class="screen">
+            <div class="history-screen">
+              <input id="history" name="history" type="text" value="" disabled>
+            </div>
+            <div class="main-screen">
+              <input id="main" name="main" value="" type="text" disabled>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="memory">
+              <div role="button">MC</div>
+              <div role="button">MR</div>
+              <div role="button">M+</div>
+              <div role="button">M-</div>
+              <div role="button">MS</div>
+              <div role="button">M&darr;</div>
+            </div>
+          </div>
+        </header>
+        <section class="bottom-part">
+          <div class="features">
+            <div class="sub-menu">
+              <div class="calc-row">
+                <div id="percentage" class="calc-button image sign" data-value="%" role="button">
+                  <img class="icon icons8-Percentage" src="@/assets/img/5.png">
+                </div>
+                <div id="sqrt" class="calc-button image sign" data-value="sqrt" role="button">
+                  <img class="icon icons8-Square-Root" src="@/assets/img/6.png">
+                </div>
+                <div id="sqr" class="calc-button sign" data-value="sqr" role="button">
+                  <span class="x-sign">
+                    <sub>x</sub>
+                  </span>
+                  <span>
+                    <sup>2</sup>
+                  </span>
+                </div>
+                <div id="fraction" class="calc-button sign" data-value="1/x" role="button">
+                  <span>
+                    <sup>1</sup>
+                  </span>
+                  <span>&frasl;</span>
+                  <span class="x-sign">
+                    <sub><em>x</em></sub>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="main-menu">
+              <div class="calc-row">
+                <div id="clear-entry" class="calc-button sign" data-value="CE" role="button">CE</div>
+                <div id="clear" class="calc-button sign" data-value="C" role="button">C</div>
+                <div id="clear-element" class="calc-button image sign" data-value="CS" role="button">
+                  <img class="icon icons8-Clear-Symbol" src="@/assets/img/9.png">
+                </div>
+                <div id="divide" class="calc-button image sign" data-value="/" role="button">
+                  <img class="icon icons8-Divide" src="@/assets/img/8.png">
+                </div>
+              </div>
+              <div class="calc-row">
+                <div class="calc-button number" role="button" data-value="7">7</div>
+                <div class="calc-button number" role="button" data-value="8">8</div>
+                <div class="calc-button number" role="button" data-value="9">9</div>
+                <div id="multiply" class="calc-button image sign" data-value="*" role="button">
+                  <img class="icon icons8-Multiply" src="@/assets/img/2.png">
+                </div>
+              </div>
+              <div class="calc-row">
+                <div class="calc-button number" role="button" data-value="4">4</div>
+                <div class="calc-button number" role="button" data-value="5">5</div>
+                <div class="calc-button number" role="button" data-value="6">6</div>
+                <div id="minus" class="calc-button image sign" data-value="-" role="button">
+                  <img class="icon icons8-Minus-Math-" src="@/assets/img/1.png">
+                </div>
+              </div>
+              <div class="calc-row">
+                <div class="calc-button number" role="button" data-value="1">1</div>
+                <div class="calc-button number" role="button" data-value="2">2</div>
+                <div class="calc-button number" role="button" data-value="3">3</div>
+                <div id="plus" class="calc-button image sign" data-value="+" role="button">
+                  <img class="icon icons8-Plus-Math" src="@/assets/img/9.png">
+                </div>
+              </div>
+              <div class="calc-row">
+                <div id="plus-minus" class="calc-button image sign" data-value="+-" role="button">
+                  <img class="icon icons8-Plus-Minus" src="@/assets/img/10.png">
+                </div>
+                <div class="calc-button number" role="button" data-value="0">0</div>
+                <div id="dot" class="calc-button dot sign" data-value="." role="button">.</div>
+                <div id="equal" class="calc-button image equals sign" data-value="=" role="button">
+                  <img class="icon icons8-Equal-Sign" src="@/assets/img/11.png" width="32" height="32">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </section>
+
+
+  <!-- Footer-->
+  <footer class="footer bg-black small text-center text-white-50">
+    <div class="container px-4 px-lg-5">Copyright &copy; Calculator 2022</div>
+  </footer>
+</body>
+</template>
+
+<script>
+(function (){
+        'use strict';
+        // result
+        var result;
+        // current number
+        var currNum;
+        // prev result
+        var prevResult;
+        // history
+        var history;
+        // prev btn pressed
+        var prevBtn;
+        // math operation
+        var mathOp;
+        // prev math operation
+        var prevMathOp;
+        // math operation counter
+        var mathOpCount;
+        // math op pressed?
+        var mathOpPress;
+        // init
+        var isInit;
+        // main screen
+        var mainScreen = document.querySelector('#main');
+        // history screen
+        var historyScreen = document.querySelector('#history');
+
+        // attach click events to buttons
+        Array.prototype.forEach.call(document.querySelectorAll('.calc-button'), function (btn) {
+            btn.addEventListener('click', function (e) {
+                // `e.currentTarget` or `this`
+                var btnClicked = e.currentTarget.getAttribute('data-value');
+                input(btnClicked);
+            });
+        });
+
+        // initialize
+        function init() {
+            result = null;
+            currNum = 0;
+            prevBtn = null;
+            mathOp = null;
+            prevMathOp = null;
+            mathOpCount = 0;
+            history = '';
+            mathOpPress = false;
+            isInit = true;
+            updateMainScreen(0);
+            updateHistoryScreen(history);
+        }
+
+        //
+        function input(btn) {
+
+            // copy prev math op
+            if (!isNaN(prevBtn) && btn !== '=' && btn !== 'C' && btn !== 'CE' && btn !== 'CS' && btn !== '.') {
+                prevMathOp = mathOp;
+            }
+
+            switch (btn) {
+                case '+': mathOpPress = true; mathOp = addition; break;
+                case '-': mathOpPress = true; mathOp = subtraction; break;
+                case '/': mathOpPress = true; mathOp = division; break;
+                case '*': mathOpPress = true; mathOp = multiplication; break;
+                case 'C': init(); break;
+            }
+
+            handler(btn);
+
+
+            var fontSize = parseFloat(mainScreen.style.fontSize);
+            // return to default main screen size
+            if (fontSize < 3 && currNum.length < 11) {
+                mainScreen.style.fontSize = '3rem';
+            }
+
+            console.log('Result: ' + result);
+            console.log('Prev result: ' + prevResult);
+            console.log('current number: ' + currNum);
+            console.log('btn: ' + btn);
+            console.log('Prev Math Op: ' + prevMathOp);
+            console.log('Math Op Counter: ' + mathOpCount);
+            console.log('Prev btn: ' + prevBtn);
+            console.log('History: ' + history);
+            console.log('Main Screen ' + mainScreen.value);
+            console.log('*'.repeat(15));
+        }
+
+        //
+        function handler(btn) {
+            // return if C wasn't pressed when divide by zero was done
+            if (btn !== 'C' && result === 'Result is undefined' || result === 'Cannot divide by zero') {
+                return;
+            }
+
+            // update history
+            if (btn !== '=' && btn !== 'C' && btn !== 'CE' && btn !== 'CS') {
+                history = (isNaN(prevBtn) && isNaN(btn)) ? history.slice(0, -1) + btn : history + btn;
+            }
+
+            // btn clicked is `Number` or `.`
+            if (!isNaN(btn) || btn === '.') {
+                if (btn === '.' && /^\d+$/.test(currNum)) {
+                    currNum = currNum + btn;
+                } else if (!isNaN(btn)) {
+                    currNum = (!isNaN(prevBtn) && prevBtn !== null && mainScreen.value !== '0') || prevBtn === '.' ? currNum + btn : btn;
+                }
+                mathOpPress = false;
+                updateMainScreen(currNum);
+                // btn clicked is `Sign`
+            } else {
+
+                // update history
+                if (btn === '-' || btn === '+' || btn === '*' || btn === '/') {
+                    // for example, when `-` is pressed, add `0 -` to history screen
+                    if ((prevBtn === null || prevBtn === '=') && !isInit) {
+                        history = '0' + btn;
+                        mathOpCount++;
+                    }
+
+                    if (!historyScreen.value.length && mainScreen.value.length) {
+                        history = mainScreen.value + btn;
+                    }
+                }
+
+                // if math op was pressed and result is null
+                if (mathOp && result === null) {
+                    result = Number(currNum);
+                }
+
+                // count percents
+                if (btn === '%') {
+                    history = history.slice(0, -(currNum.length + 1));
+                    currNum = percentage(currNum, result);
+                    history += currNum + ' ';
+                    updateMainScreen(currNum);
+                    // count square or square root
+                } else if (btn === 'sqr' || btn === 'sqrt' || btn === '1/x') {
+                    history = history.slice(0, -(currNum.length + btn.length)) + (btn === '1/x' ? '1/(' + currNum + ') ' : btn + '(' + currNum + ') ');
+                    currNum = (btn === 'sqr') ? square(currNum) : (btn === 'sqrt') ? squareRoot(currNum) : fraction(currNum);
+                    updateMainScreen(currNum);
+                    updateHistoryScreen(history);
+                }
+
+                // count result
+                if (btn === '=') {
+                    // if math op exists
+                    if (mathOp) {
+                        mathOpCount = 0;
+                        // if last button pressed is `mathOperation`
+                        // like `+, - etc.` before `=` was pressed
+                        if (mathOpPress) {
+                            mathOp(prevResult);
+                            // if last button pressed is `digit` before `=` was pressed
+                        } else {
+                            mathOp(Number(currNum));
+                        }
+
+                        history = '';
+                        prevBtn = btn;
+
+                        updateMainScreen(result);
+                        updateHistoryScreen(history);
+
+                        return;
+                    }
+                }
+
+                // count math ops
+                // if sign was pressed and prev btn isn't sign and except some buttons
+                if (isNaN(btn) && (!isNaN(prevBtn) || prevBtn === '%' || prevBtn === 'sqr' || prevBtn === 'sqrt' || prevBtn === '1/x') &&
+                    btn !== '=' && btn !== 'C' && btn !== 'CE' && btn !== 'CS' && btn !== '.' && btn !== '%' && btn !== 'sqr' & btn !== 'sqrt' && btn !== '1/x') {
+                    mathOpCount++;
+                }
+
+                // count result in row
+                if (mathOpCount >= 2 && (!isNaN(prevBtn) || prevBtn === 'sqrt' || prevBtn === 'sqr' || prevBtn === '1/x' || prevBtn === '%') && btn !== 'CE' && btn !== 'CS') {
+                    prevMathOp(Number(currNum));
+                    updateMainScreen(result);
+                }
+
+                if (btn === 'CE' && history.length > 0) {
+                    history = history.slice(0, -(currNum.length));
+                    currNum = '0';
+                    updateMainScreen(0);
+                } else if (btn === 'CS') {
+                    if (result != mainScreen.value) {
+                        currNum = currNum.slice(0, -1);
+                        history = history.slice(0, -1);
+                        if (!currNum.length) {
+                            currNum = '0';
+                        }
+                        updateMainScreen(currNum);
+                    } else {
+                        return;
+                    }
+                }
+
+                if (result !== null && btn !== 'CE' && btn !== 'CS') {
+                    updateHistoryScreen(history);
+                }
+            }
+
+            prevBtn = btn;
+            prevResult = result;
+            isInit = false;
+        }
+
+        function updateMainScreen(val) {
+
+            val = String(val);
+
+            if (val.length > 10) {
+                mainScreen.style.fontSize = '1.75rem';
+                val = Math.round(val * 10000000000000000) / 10000000000000000;
+            }
+
+            mainScreen.value = val;
+        }
+
+        function updateHistoryScreen(history) {
+            historyScreen.value = history;
+        }
+
+        function addition(val) {
+            result += val;
+        }
+
+        function subtraction(val) {
+            result -= val;
+        }
+
+        function division(val) {
+            result /= val;
+        }
+
+        function multiplication(val) {
+            result *= val;
+        }
+
+        function square(val) {
+            return val * val;
+        }
+
+        function squareRoot(val) {
+            return Math.sqrt(val);
+        }
+
+        function percentage(val, res) {
+            return res * val / 100;
+        }
+
+        function fraction(val) {
+            return 1 / val;
+        }
+
+        init();
+
+}());
+
+</script>
